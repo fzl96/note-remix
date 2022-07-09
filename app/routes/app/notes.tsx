@@ -19,17 +19,13 @@ const Notes = () => {
   const matches = useMediaQuery("(max-width: 768px)", false);
 
   const notes = useLoaderData<NoteType[]>();
+
+  console.log(params.noteId);
   return (
     <div className="flex">
-      <ScrollArea
-        className={`lg:h-[45rem] lg:pr-3`}
-        type="scroll"
-        scrollbarSize={4}
-      >
+      <ScrollArea type="scroll" scrollbarSize={4}>
         <div
-          className={`${
-            !matches && "grid lg:grid-cols-4 md:grid-cols-2 gap-3"
-          }`}
+          className={`grid gap-3 lg:h-[45rem] lg:pr-3 transition-all ease delay-150 duration-300 ${!params.noteId? 'lg:grid-cols-4 md:grid-cols-2' : 'lg:w-80 grid-cols-1' }`}
         >
           <NotesList notes={notes} />
         </div>
