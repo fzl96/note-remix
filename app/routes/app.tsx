@@ -5,14 +5,17 @@ import {
   Navbar,
   Header,
   Text,
-  MediaQuery,
   Burger,
   useMantineTheme,
+  useMantineColorScheme,
+  Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 const App = () => {
   const theme = useMantineTheme();
+  const { colorScheme, toggleColorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
   const [opened, setOpened] = useState(false);
   const matches = useMediaQuery("(max-width: 768px)", false);
 
@@ -20,10 +23,7 @@ const App = () => {
     <AppShell
       styles={{
         main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[7]
-              : theme.colors.gray[0],
+          background: theme.colorScheme === "dark" ? theme.colors.dark[7] : "",
         },
       }}
       navbarOffsetBreakpoint="sm"
@@ -45,6 +45,10 @@ const App = () => {
           }}
         >
           <Text>Application navbar</Text>
+          <Switch
+            color={dark ? "yellow" : "blue"}
+            onClick={() => toggleColorScheme()}
+          />
         </Navbar>
       }
       header={
@@ -53,15 +57,14 @@ const App = () => {
             <div
               style={{ display: "flex", alignItems: "center", height: "100%" }}
             >
-              <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-                <Burger
-                  opened={opened}
-                  onClick={() => setOpened((o) => !o)}
-                  size="sm"
-                  color={theme.colors.gray[6]}
-                  mr="xl"
-                />
-              </MediaQuery>
+              <Burger
+                className="sm:block"
+                opened={opened}
+                onClick={() => setOpened((o) => !o)}
+                size="sm"
+                color={theme.colors.gray[6]}
+                mr="xl"
+              />
               <Text>Application header</Text>
             </div>
           </Header>

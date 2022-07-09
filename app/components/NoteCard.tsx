@@ -12,7 +12,7 @@ const NoteCard = ({ note }: Props) => {
     <Card
       shadow="sm"
       p="xl"
-      className={theme.colorScheme === "dark" ? "bg-[#141517]" : ""}
+      className={theme.colorScheme === "dark" ? "bg-[#141517]" : "bg-[#F8F9FA]"}
     >
       <Text weight={500} size="lg">
         {note.title}

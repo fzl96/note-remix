@@ -1,6 +1,6 @@
 import type { ColorScheme } from "@mantine/core";
-import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import type { MetaFunction } from "@remix-run/node";
+import { MantineProvider, ColorSchemeProvider } from "@mantine/core";
 import {
   Links,
   LiveReload,
