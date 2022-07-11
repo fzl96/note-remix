@@ -4,7 +4,13 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Source Sans Pro', 'sans-serif'],
+        encode: ['Encode Sans', 'sans-serif'],
+        pop: ['Poppins']
+      }
+    },
   },
   plugins: [],
 }

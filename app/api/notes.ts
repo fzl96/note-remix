@@ -1,8 +1,8 @@
 export type NoteType = {
-  userId: number,
   id: number,
   title: string,
   body: string,
+  reactions: number
 }
 
 export const getNotes = async () => {

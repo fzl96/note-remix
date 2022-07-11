@@ -21,6 +21,7 @@ const App = () => {
 
   return (
     <AppShell
+      className="z-[-2] h-full"
       styles={{
         main: {
           background: theme.colorScheme === "dark" ? theme.colors.dark[7] : "",
@@ -44,9 +45,9 @@ const App = () => {
             },
           }}
         >
-          <Text>Application navbar</Text>
+          <Text className="font-encode">Application navbar</Text>
           <Switch
-            color={dark ? "yellow" : "blue"}
+            color={dark ? "dark" : "dark"}
             onClick={() => toggleColorScheme()}
           />
         </Navbar>

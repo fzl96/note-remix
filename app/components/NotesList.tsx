@@ -1,5 +1,6 @@
 import { ScrollArea } from "@mantine/core";
 import { Link, useParams } from "@remix-run/react";
+import { useRef, useState } from "react";
 import { NoteType } from "~/api/notes";
 import NoteCard from "./NoteCard";
 
@@ -8,12 +9,11 @@ interface Props {
 }
 
 const NotesList = ({ notes }: Props) => {
-  const params = useParams();
   return (
     <>
-      {notes.map((note) => {
+      {notes.map((note, index) => {
         return (
-          <div key={note.id} className="mb-4">
+          <div key={index} className="mb-4">
             <Link to={`/app/notes/${note.id}`}>
               <NoteCard note={note} />
             </Link>
