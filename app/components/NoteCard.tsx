@@ -1,34 +1,40 @@
-import { Card, Text, useMantineTheme } from "@mantine/core";
+import { useMantineColorScheme } from "@mantine/core";
 import { NoteType } from "~/api/notes";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface Props {
   note: NoteType;
 }
 
 const NoteCard = ({ note }: Props) => {
-  const theme = useMantineTheme();
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
 
   return (
     <>
-      <motion.div layoutId={note.id.toString()}>
-        {/* <Card
-        shadow="sm"
-        p="xl"
-        className={
-          theme.colorScheme !== "dark" ? "bg-[#F8F9FA] z-[-1] " : "bg-[#141517]"
-        }
-      > */}
-        <motion.h3
-          layoutId={`${note.id.toString()}-title`}
-          className="text-xl font-medium max-w-[20rem]"
+      <AnimatePresence>
+        <motion.div
+          layoutId={note.id.toString()}
+          whileHover={{ scale: 1.07 }}
+          whileTap={{ scale: 0.9 }}
+          className={`${dark ? "bg-[#141517]" : "bg-[#fdaaaa]"} p-5 rounded-lg relative z-[1000]
+        `}
         >
-          {note.title}
-        </motion.h3>
+          <motion.h3
+            layoutId={`${note.id.toString()}-title`}
+            className="text-lg font-medium max-w-[20rem]"
+          >
+            {note.title}
+          </motion.h3>
 
-        <p className="text-md">{note.body.slice(0, 120)}</p>
-        {/* </Card> */}
-      </motion.div>
+          <motion.p
+            layoutId={`${note.id.toString()}-body`}
+            className="text-md "
+          >
+            {note.body.slice(0, 80)}...
+          </motion.p>
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 };

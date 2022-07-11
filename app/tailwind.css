@@ -559,20 +559,20 @@ video {
   position: fixed;
 }
 
-.z-\[-1\]{
-  z-index: -1;
+.relative{
+  position: relative;
 }
 
 .z-\[-2\]{
   z-index: -2;
 }
 
-.z-\[10000\]{
-  z-index: 10000;
+.z-\[1000\]{
+  z-index: 1000;
 }
 
-.float-right{
-  float: right;
+.z-\[10000\]{
+  z-index: 10000;
 }
 
 .mb-4{
@@ -587,10 +587,6 @@ video {
   display: flex;
 }
 
-.grid{
-  display: grid;
-}
-
 .hidden{
   display: none;
 }
@@ -599,36 +595,24 @@ video {
   height: 100%;
 }
 
-.h-\[2\.5rem\]{
-  height: 2.5rem;
-}
-
-.w-\[5rem\]{
-  width: 5rem;
-}
-
 .w-full{
   width: 100%;
-}
-
-.w-\[25rem\]{
-  width: 25rem;
 }
 
 .max-w-\[20rem\]{
   max-width: 20rem;
 }
 
-.grid-cols-2{
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.max-w-\[25rem\]{
+  max-width: 25rem;
+}
+
+.max-w-\[50rem\]{
+  max-width: 50rem;
 }
 
 .flex-col{
   flex-direction: column;
-}
-
-.gap-3{
-  gap: 0.75rem;
 }
 
 .rounded-lg{
@@ -639,19 +623,31 @@ video {
   border-width: 1px;
 }
 
-.bg-\[\#F8F9FA\]{
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 249 250 / var(--tw-bg-opacity));
-}
-
 .bg-\[\#141517\]{
   --tw-bg-opacity: 1;
   background-color: rgb(20 21 23 / var(--tw-bg-opacity));
 }
 
-.bg-gray-200{
+.bg-\[\#fdaaaa\]{
   --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+  background-color: rgb(253 170 170 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#ee6969\]{
+  --tw-bg-opacity: 1;
+  background-color: rgb(238 105 105 / var(--tw-bg-opacity));
+}
+
+.p-5{
+  padding: 1.25rem;
+}
+
+.p-3{
+  padding: 0.75rem;
+}
+
+.p-10{
+  padding: 2.5rem;
 }
 
 .px-10{
@@ -667,8 +663,8 @@ video {
   font-family: Encode Sans, sans-serif;
 }
 
-.text-xl{
-  font-size: 1.25rem;
+.text-lg{
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -680,11 +676,6 @@ video {
 .text-2xl{
   font-size: 1.5rem;
   line-height: 2rem;
-}
-
-.text-lg{
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .font-medium{
@@ -699,18 +690,9 @@ video {
   font-weight: 600;
 }
 
-.shadow{
-  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
-.transition{
-  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
+.text-white{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .transition-all{
@@ -723,6 +705,32 @@ video {
   transition-duration: 100ms;
 }
 
+.my-masonry-grid {
+  /* Not needed if autoprefixing */
+  /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px;
+  /* gutter size offset */
+  width: auto;
+}
+
+.my-masonry-grid_column {
+  padding-left: 30px;
+  /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 30px;
+}
+
+.test {
+  font-size: large;
+}
+
 @media (min-width: 640px){
   .sm\:block{
     display: block;
@@ -730,34 +738,29 @@ video {
 }
 
 @media (min-width: 768px){
-  .md\:grid-cols-2{
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .md\:float-right{
+    float: right;
   }
 }
 
 @media (min-width: 1024px){
-  .lg\:mb-5{
-    margin-bottom: 1.25rem;
+  .lg\:float-right{
+    float: right;
   }
 
-  .lg\:mt-4{
-    margin-top: 1rem;
+  .lg\:h-\[40rem\]{
+    height: 40rem;
   }
 
-  .lg\:h-\[30rem\]{
-    height: 30rem;
+  .lg\:h-\[2\.5rem\]{
+    height: 2.5rem;
   }
 
-  .lg\:grid-cols-3{
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .lg\:w-\[5rem\]{
+    width: 5rem;
   }
 
   .lg\:pr-3{
     padding-right: 0.75rem;
-  }
-
-  .lg\:text-3xl{
-    font-size: 1.875rem;
-    line-height: 2.25rem;
   }
 }
