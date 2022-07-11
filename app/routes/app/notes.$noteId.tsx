@@ -13,31 +13,33 @@ const Awa = () => {
 
   return (
     <>
-      <AnimatePresence>
-        <motion.div
-          className=""
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 1 }}
+      <motion.div
+        className="bg-gray-500 rounded-xl w-full h-full"
+        layoutId={noteId}
+        // initial={{ opacity: 0 }}
+        // animate={{ opacity: 1 }}
+        // exit={{ opacity: 1 }}
+      >
+        {/* <motion.h3
+          // layoutId={`${noteId}-title`}
+          className="text-2xl font-semibold ml-8 max-w-[25rem]"
         >
-          <motion.h3
-            layoutId={`${noteId}-title`}
-            className="text-2xl font-semibold ml-8 max-w-[25rem] text-white"
-          >
-            {currentNote && currentNote.title}
-          </motion.h3>
-          <motion.div
-            layoutId={noteId?.toString()}
+          {currentNote && currentNote.title}
+        </motion.h3> */}
+        {/* <motion.div
+            // layoutId={noteId?.toString()}
             className={` ${
               theme.colorScheme === "dark" ? "bg-[#ee6969]" : "bg-[#fdaaaa]"
             }
-         rounded-lg lg:float-right md:float-right lg:h-[2.5rem] lg:w-[5rem] w-full h-full z-[10000] px-10 pt-16`}
-          ></motion.div>
-          <motion.p layoutId={`${noteId}-body`} className="max-w-[50rem] p-10">
+         rounded-lg lg:float-right md:float-right lg:h-[2.5rem] lg:w-[5rem] z-[10000] px-10 pt-16`}
+          >
+          </motion.div> */}
+        {/* <motion.p 
+          // layoutId={`${noteId}-body`} 
+          className="max-w-[50rem] p-10">
             {currentNote && currentNote.body}
-          </motion.p>
-        </motion.div>
-      </AnimatePresence>
+          </motion.p> */}
+      </motion.div>
     </>
   );
 };

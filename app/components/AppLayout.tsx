@@ -23,7 +23,7 @@ const AppLayout = ({ children }: any) => {
         className="z-[-2] h-full"
         styles={{
           main: {
-            background: dark ? theme.colors.dark[7] : "",
+            background: dark ? theme.colors.dark[7] : "#f6f8fa",
           },
         }}
         navbarOffsetBreakpoint="sm"
@@ -36,7 +36,7 @@ const AppLayout = ({ children }: any) => {
             width={{ sm: 200, lg: 370 }}
             styles={{
               root: {
-                background: dark ? theme.colors.dark[8] : '#f6f6f6',
+                background: dark ? theme.colors.dark[8] : "#fff",
                 border: "none",
               },
             }}

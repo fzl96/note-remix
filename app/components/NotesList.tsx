@@ -10,7 +10,7 @@ interface Props {
 
 const NotesList = ({ notes }: Props) => {
   const breakpoints = {
-    default: 3,
+    default: 4,
     1024: 2
   }
   return (
