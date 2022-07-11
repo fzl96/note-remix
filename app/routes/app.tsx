@@ -17,9 +17,6 @@ import { NoteType } from "~/api/notes";
 export let loader: LoaderFunction = async () => {
   const res = await fetch("https://dummyjson.com/posts");
   const notes = await res.json();
-  console.log({
-    msg: 'Test'
-  });
   return notes.posts;
 };
 

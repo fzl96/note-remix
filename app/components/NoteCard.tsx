@@ -26,7 +26,7 @@ const NoteCard = ({ note }: Props) => {
           {note.title}
         </motion.h3>
 
-        <Text size="sm">{note.body.slice(0, 70)}</Text>
+        <p className="text-md">{note.body.slice(0, 120)}</p>
         {/* </Card> */}
       </motion.div>
     </>
