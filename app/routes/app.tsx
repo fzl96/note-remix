@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Outlet } from "@remix-run/react";
+import { Outlet, useLoaderData } from "@remix-run/react";
 import {
   AppShell,
   Navbar,
@@ -11,8 +11,22 @@ import {
   Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { LoaderFunction } from "@remix-run/node";
+import { NoteType } from "~/api/notes";
+
+export let loader: LoaderFunction = async () => {
+  const res = await fetch("https://dummyjson.com/posts");
+  const notes = await res.json();
+  console.log({
+    msg: 'Test'
+  });
+  return notes.posts;
+};
 
 const App = () => {
+  const notes = useLoaderData<NoteType[]>();
+
+
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -74,7 +88,7 @@ const App = () => {
         )
       }
     >
-      <Outlet />
+      <Outlet context={notes}/>
     </AppShell>
   );
 };
