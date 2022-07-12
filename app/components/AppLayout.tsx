@@ -43,7 +43,7 @@ const AppLayout = ({ children }: any) => {
           >
             <Text className="font-encode">Application navbar</Text>
             <Switch
-              color={dark ? "dark" : "dark"}
+              color={dark ? "blue" : "blue"}
               onClick={() => toggleColorScheme()}
             />
           </Navbar>

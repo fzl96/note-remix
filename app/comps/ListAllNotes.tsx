@@ -1,22 +1,34 @@
-import { ScrollArea } from "@mantine/core";
-import { Link } from "@remix-run/react";
+import { ScrollArea, useMantineColorScheme } from "@mantine/core";
+import { Link, useParams } from "@remix-run/react";
 import { useState } from "react";
 import { NoteType } from "~/api/notes";
 import React from "react";
 import Card from "./Card";
-
 interface Props {
   notes: NoteType[];
   children: React.ReactNode;
 }
 
 const ListAllNotes = ({ children, notes }: Props) => {
+  const { colorScheme } = useMantineColorScheme();
+  const dark = colorScheme === "dark";
+
+  const params = useParams();
+
   return (
     <>
-      <div className="h-[7rem]" />
-      <div className="flex gap-3">
-        <div className="p-2 bg-white rounded-2xl w-96 flex flex-col gap-3 lg:h-[38rem] shadow-sm">
-          <div className="px-4 py-4 bg-grayish rounded-[0.7rem]">
+      <div className="h-[7rem] hidden lg:block" />
+      <div className="flex gap-3 items-center justify-center">
+        <div
+          className={`${
+            dark ? "bg-grayishDark" : "bg-white"
+          } p-2 bg-white rounded-2xl lg:w-96 flex flex-col gap-3 lg:h-[38rem] shadow-sm`}
+        >
+          <div
+            className={`${
+              dark ? "bg-grayishDark2" : "bg-grayish"
+            } px-4 py-4 rounded-[0.7rem]`}
+          >
             Search bar
           </div>
           <ScrollArea type="scroll" scrollbarSize={4}>
@@ -35,8 +47,18 @@ const ListAllNotes = ({ children, notes }: Props) => {
             </div>
           </ScrollArea>
         </div>
-        <div className="p-2 bg-white w-full rounded-2xl flex flex-col gap-3 lg:h-[38rem] shadow-sm lg:block">
-          {children}
+        <div
+          className={`${
+            dark ? "bg-grayishDark" : "bg-white"
+          } p-2 w-full rounded-2xl flex flex-col gap-3 lg:h-[38rem] shadow-sm hidden lg:block`}
+        >
+          {!params.noteId ? (
+            <div className="flex flex-col justify-center items-center w-full h-full gap-7">
+              <img src="/bg.svg" alt="" className="h-[15rem]" />
+            </div>
+          ) : (
+            <>{children}</>
+          )}
         </div>
       </div>
     </>
