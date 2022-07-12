@@ -9,10 +9,13 @@ const Card = ({ note }: Props) => {
   return (
     <>
       <motion.div
-        className="p-5 bg-gray-200 rounded-md"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.9 }}
+        className="p-5 bg-grayish rounded-md"
         layoutId={note.id.toString()}
       >
-        {note.title}
+        <motion.h3>{note.title}</motion.h3>
+        <motion.p>{note.body.slice(0, 75)}</motion.p>
       </motion.div>
     </>
   );

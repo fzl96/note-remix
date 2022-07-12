@@ -15,7 +15,7 @@ const NotesList = ({ notes }: Props) => {
   }
   return (
     <>
-      <Masonry 
+      {/* <Masonry 
         breakpointCols={breakpoints}
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column"
@@ -29,7 +29,7 @@ const NotesList = ({ notes }: Props) => {
             </div>
           );
         })}
-      </Masonry>
+      </Masonry> */}
     </>
   );
 };

@@ -2,7 +2,7 @@ import { useMediaQuery } from "@mantine/hooks";
 import { Tabs } from "@mantine/core";
 import AllNotes from "~/components/Notes.All";
 import { useState } from "react";
-import { useOutletContext } from "@remix-run/react";
+import { Outlet, useOutletContext } from "@remix-run/react";
 import { NoteType } from "~/api/notes";
 import NotesList from "~/components/NotesList";
 import ListAllNotes from "~/comps/ListAllNotes";
@@ -14,14 +14,16 @@ const Notes = () => {
 
   return (
     <div>
-      <Tabs className="z-[-2]" active={activeTab} onTabChange={setActiveTab}>
+      {/* <Tabs className="z-[-2]" active={activeTab} onTabChange={setActiveTab}>
         <Tabs.Tab label="Home"></Tabs.Tab>
-        <Tabs.Tab label="All Notes">
-          <ListAllNotes notes={notes}/>
+        <Tabs.Tab label="All Notes"> */}
+          <ListAllNotes notes={notes}>
+            <Outlet context={notes}/>
+          </ListAllNotes>
           {/* <AllNotes /> */}
-        </Tabs.Tab>
+        {/* </Tabs.Tab>
         <Tabs.Tab label="Folders">Third tab content</Tabs.Tab>
-      </Tabs>
+      </Tabs> */}
     </div>
   );
 };

@@ -9,7 +9,7 @@ const AllNotes = () => {
   const notes = useOutletContext<NoteType[]>();
   return (
     <div className="flex flex-col p">
-      <div className="flex">
+      {/* <div className="flex">
         <div>
           <ScrollArea type="scroll" scrollbarSize={4}>
             <motion.div
@@ -22,7 +22,7 @@ const AllNotes = () => {
             </motion.div>
           </ScrollArea>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

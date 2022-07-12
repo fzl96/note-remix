@@ -23,7 +23,7 @@ const AppLayout = ({ children }: any) => {
         className="z-[-2] h-full"
         styles={{
           main: {
-            background: dark ? theme.colors.dark[7] : "#f6f8fa",
+            background: dark ? theme.colors.dark[7] : "#f4f5f7",
           },
         }}
         navbarOffsetBreakpoint="sm"
@@ -33,7 +33,7 @@ const AppLayout = ({ children }: any) => {
             p="md"
             hiddenBreakpoint="sm"
             hidden={!opened}
-            width={{ sm: 200, lg: 370 }}
+            width={{ sm: 200, lg: 330 }}
             styles={{
               root: {
                 background: dark ? theme.colors.dark[8] : "#fff",

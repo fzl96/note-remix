@@ -12,7 +12,7 @@ const NoteCard = ({ note }: Props) => {
 
   return (
     <>
-      <motion.div
+      {/* <motion.div
         layoutId={`${note.id.toString()}-container`}
         whileHover={{ scale: 1.07 }}
         whileTap={{ scale: 0.9 }}
@@ -31,7 +31,7 @@ const NoteCard = ({ note }: Props) => {
         className="text-md ">
           {note.body.slice(0, 80)}...
         </motion.p>
-      </motion.div>
+      </motion.div> */}
     </>
   );
 };
