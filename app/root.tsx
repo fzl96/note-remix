@@ -29,7 +29,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="font-encode">
+      <body className="font-man">
         <MantineTheme>
           <Outlet />
         </MantineTheme>
