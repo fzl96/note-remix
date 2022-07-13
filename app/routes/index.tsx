@@ -1,10 +1,10 @@
 import { requireUserId } from "~/utils/auth.server";
 import { LoaderFunction } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
+import { getUser } from "~/utils/auth.server";
 
 export const loader: LoaderFunction = async ({request}) => {
-  await requireUserId(request)
-  return null;
+  return await getUser(request)  ? redirect('/app') : null
 }
 
 export default function Index() {
