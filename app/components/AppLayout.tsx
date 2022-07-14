@@ -10,6 +10,7 @@ import {
   Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Link } from "@remix-run/react";
 
 const AppLayout = ({ children }: any) => {
   const [opened, setOpened] = useState(false);
@@ -41,11 +42,17 @@ const AppLayout = ({ children }: any) => {
               },
             }}
           >
-            <Text className="font-encode">Application navbar</Text>
-            <Switch
-              color={dark ? "blue" : "blue"}
-              onClick={() => toggleColorScheme()}
-            />
+            <div className="flex flex-col justify-between h-full">
+              <ul className="w-full p-10">
+                <Link to="/app/notes">
+                  <li className="p-3 hover:bg-grayish rounded-lg">Notes</li>
+                </Link>
+              </ul>
+              <Switch
+                color={dark ? "blue" : "blue"}
+                onClick={() => toggleColorScheme()}
+              />
+            </div>
           </Navbar>
         }
         header={

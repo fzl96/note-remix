@@ -13,17 +13,6 @@ const Notes = () => {
   return (
     <div>
       <Tabs
-        styles={{
-          // root: { color: "red" },
-          // tabsListWrapper: { color: "red" },
-          // tabsList: { color: "red" },
-          // body: { color: "red" },
-          // tabControl: { color: "red" },
-          // tabActive: { color: "red" },
-          // tabInner: { color: "red" },
-          // tabLabel: { color: "red" },
-          // tabIcon: { color: "red" },
-        }}
         className="z-[-2]"
         active={activeTab}
         onTabChange={setActiveTab}
