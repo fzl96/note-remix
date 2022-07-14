@@ -25,13 +25,13 @@ export const action: ActionFunction = async ({ request }) => {
 const New = () => {
   return (
     <div>
-      <form method="post">
+      <Form method="post">
         <label htmlFor="title">Title</label>
         <input type="text" name="title" />
         <label htmlFor="body">Body</label>
         <input type="text" name="body" />
         <button type="submit">Submit</button>
-      </form>
+      </Form>
     </div>
   );
 };

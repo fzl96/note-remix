@@ -1,11 +1,11 @@
 import { ScrollArea, useMantineColorScheme } from "@mantine/core";
 import { Link, useParams } from "@remix-run/react";
 import { useState } from "react";
-import { NoteType } from "~/api/notes";
 import React from "react";
 import Card from "./Card";
+import { Note } from '@prisma/client'
 interface Props {
-  notes: NoteType[];
+  notes: Note[];
   children: React.ReactNode;
 }
 

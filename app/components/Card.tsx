@@ -1,9 +1,8 @@
-import type { NoteType } from "~/utils/types.server";
 import { motion } from "framer-motion";
 import { useMantineColorScheme } from "@mantine/core";
-
+import { Note } from '@prisma/client'
 interface Props {
-  note: NoteType;
+  note: Note;
 }
 
 const Card = ({ note }: Props) => {

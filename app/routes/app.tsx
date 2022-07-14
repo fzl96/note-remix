@@ -3,16 +3,25 @@ import type { LoaderFunction } from "@remix-run/node";
 import AppLayout from "~/components/AppLayout";
 import { requireUserId } from "~/utils/auth.server";
 import type { NoteType } from "~/utils/types.server";
+import { prisma } from "~/utils/prisma.server";
+import { Note } from "@prisma/client";
 
-export let loader: LoaderFunction = async ({request}) => {
-  await requireUserId(request);
-  const res = await fetch("https://dummyjson.com/posts");
-  const notes = await res.json();
-  return notes.posts;
+export let loader: LoaderFunction = async ({ request }) => {
+  const userId = await requireUserId(request);
+  const notes = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+    select: {
+      notes: true,
+    },
+  });
+  // const notes = await prisma.note.findMany({})
+  return notes;
 };
 
 const App = () => {
-  const notes = useLoaderData<NoteType[]>();
+  const { notes } = useLoaderData();
 
   return (
     <AppLayout>
