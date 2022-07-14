@@ -10,11 +10,17 @@ import {
   Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { Link, useLocation } from "@remix-run/react";
+import { Form, Link, useLocation } from "@remix-run/react";
+import { ActionFunction } from "@remix-run/node";
+import { logout } from "~/utils/auth.server";
+
+export const action: ActionFunction = async ({ request }) => {
+  await logout(request);
+};
 
 const AppLayout = ({ children }: any) => {
   const [opened, setOpened] = useState(false);
-  const {pathname} = useLocation()
+  const { pathname } = useLocation();
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
@@ -22,7 +28,7 @@ const AppLayout = ({ children }: any) => {
 
   useEffect(() => {
     setOpened(false); // Close the navigation panel
-  }, [ pathname ]);
+  }, [pathname]);
 
   return (
     <>
@@ -57,10 +63,20 @@ const AppLayout = ({ children }: any) => {
                   <li className="p-3 hover:bg-grayish rounded-lg">Todos</li>
                 </Link>
               </ul>
-              <Switch
-                color={dark ? "blue" : "blue"}
-                onClick={() => toggleColorScheme()}
-              />
+              <div className="flex justify-between">
+                <form method="post" action="/logout">
+                  <button
+                    type="submit"
+                    className="bg-gray-800 p-3 rounded-lg text-white"
+                  >
+                    Logout
+                  </button>
+                </form>
+                <Switch
+                  color={dark ? "blue" : "blue"}
+                  onClick={() => toggleColorScheme()}
+                />
+              </div>
             </div>
           </Navbar>
         }
