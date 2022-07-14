@@ -25,8 +25,14 @@ export const signup = async (form: SignupForm) => {
   const exists = await prisma.user.count({ where: {email: form.email}});
 
   if (exists) {
-    return json(
-      { error: `User with that email already exists`},
+    return json({ 
+      error: `Email already exists`,
+      formData: {
+        name: form.name,
+        email: form.email,
+        password: form.password
+      }
+    },
       { status: 400 }
     )
   }
@@ -56,7 +62,16 @@ export const login = async (form: LoginForm) => {
   })
 
   if (!user || !(await bcrypt.compare(form.password, user.password))) {
-    return json({ error: "Incorrect login" }, { status: 400 });
+    return json({ 
+      error: "Invalid Credentials",
+      formData: {
+        email: form.email,
+        password: form.password
+      }
+    }, 
+    { 
+      status: 400 
+    });
   }
 
   return createUserSession(user.id, '/');
@@ -81,7 +96,6 @@ export const requireUserId =  async (
   const userId = session.get("userId");
 
   if(!userId || typeof userId !== 'string') {
-    const searchParams = new URLSearchParams([["redirectTo",redirectTo]]);
     throw redirect(`/login`)
   }
   return userId;

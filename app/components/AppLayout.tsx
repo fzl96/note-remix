@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AppShell,
   Navbar,
@@ -10,14 +10,20 @@ import {
   Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import { Link } from "@remix-run/react";
+import { Link, useLocation } from "@remix-run/react";
 
 const AppLayout = ({ children }: any) => {
   const [opened, setOpened] = useState(false);
+  const {pathname} = useLocation()
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const matches = useMediaQuery("(max-width: 768px)", false);
+
+  useEffect(() => {
+    setOpened(false); // Close the navigation panel
+  }, [ pathname ]);
+
   return (
     <>
       <AppShell
@@ -46,6 +52,9 @@ const AppLayout = ({ children }: any) => {
               <ul className="w-full p-10">
                 <Link to="/app/notes">
                   <li className="p-3 hover:bg-grayish rounded-lg">Notes</li>
+                </Link>
+                <Link to="/app/todos">
+                  <li className="p-3 hover:bg-grayish rounded-lg">Todos</li>
                 </Link>
               </ul>
               <Switch
@@ -86,4 +95,5 @@ const AppLayout = ({ children }: any) => {
     </>
   );
 };
+
 export default AppLayout;
