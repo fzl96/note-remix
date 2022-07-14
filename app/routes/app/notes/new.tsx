@@ -1,4 +1,4 @@
-import { ActionFunction } from "@remix-run/node";
+import { ActionFunction, redirect } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { requireUserId } from "~/utils/auth.server";
 import { prisma } from "~/utils/prisma.server";
@@ -18,20 +18,20 @@ export const action: ActionFunction = async ({ request }) => {
     },
   });
 
-  return note;
+  return redirect('/app/notes');
 };
 
 
 const New = () => {
   return (
     <div>
-      <Form method="post">
+      <form method="post">
         <label htmlFor="title">Title</label>
         <input type="text" name="title" />
         <label htmlFor="body">Body</label>
         <input type="text" name="body" />
         <button type="submit">Submit</button>
-      </Form>
+      </form>
     </div>
   );
 };
