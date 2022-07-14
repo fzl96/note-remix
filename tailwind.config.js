@@ -7,6 +7,8 @@ module.exports = {
         sans: ["Source Sans Pro", "sans-serif"],
         encode: ["Encode Sans", "sans-serif"],
         pop: ["Poppins"],
+        nu: ["Nunito Sans"],
+        man: ["Manrope"]
       },
       colors: {
         grayish: "#f4f5f7",

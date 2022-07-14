@@ -2,7 +2,7 @@ import { ScrollArea, useMantineTheme } from "@mantine/core";
 import { useOutletContext, useParams } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { NoteType } from "~/api/notes";
+import { NoteType } from "~/utils/types.server";
 
 const Awa = () => {
   const notes = useOutletContext<NoteType[]>();
@@ -16,6 +16,7 @@ const Awa = () => {
           <motion.h3 className="text-2xl font-semibold">
             {currentNote && currentNote.title}
           </motion.h3>
+          <div className="h-5"></div>
           <motion.p>{currentNote && currentNote.body}</motion.p>
         </div>
       </ScrollArea>
