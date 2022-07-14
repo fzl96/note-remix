@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AppShell,
   Navbar,
@@ -10,13 +10,26 @@ import {
   Switch,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
+import { Form, Link, useLocation } from "@remix-run/react";
+import { ActionFunction } from "@remix-run/node";
+import { logout } from "~/utils/auth.server";
+
+export const action: ActionFunction = async ({ request }) => {
+  await logout(request);
+};
 
 const AppLayout = ({ children }: any) => {
   const [opened, setOpened] = useState(false);
+  const { pathname } = useLocation();
   const theme = useMantineTheme();
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const dark = colorScheme === "dark";
   const matches = useMediaQuery("(max-width: 768px)", false);
+
+  useEffect(() => {
+    setOpened(false); // Close the navigation panel
+  }, [pathname]);
+
   return (
     <>
       <AppShell
@@ -41,11 +54,30 @@ const AppLayout = ({ children }: any) => {
               },
             }}
           >
-            <Text className="font-encode">Application navbar</Text>
-            <Switch
-              color={dark ? "blue" : "blue"}
-              onClick={() => toggleColorScheme()}
-            />
+            <div className="flex flex-col justify-between h-full">
+              <ul className="w-full p-10">
+                <Link to="/app/notes">
+                  <li className="p-3 hover:bg-grayish rounded-lg">Notes</li>
+                </Link>
+                <Link to="/app/todos">
+                  <li className="p-3 hover:bg-grayish rounded-lg">Todos</li>
+                </Link>
+              </ul>
+              <div className="flex justify-between">
+                <form method="post" action="/logout">
+                  <button
+                    type="submit"
+                    className="bg-gray-800 p-3 rounded-lg text-white"
+                  >
+                    Logout
+                  </button>
+                </form>
+                <Switch
+                  color={dark ? "blue" : "blue"}
+                  onClick={() => toggleColorScheme()}
+                />
+              </div>
+            </div>
           </Navbar>
         }
         header={
@@ -79,4 +111,5 @@ const AppLayout = ({ children }: any) => {
     </>
   );
 };
+
 export default AppLayout;

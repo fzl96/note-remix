@@ -1,40 +1,27 @@
-import { z } from "zod";
 import FormField from "~/components/form-field";
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useActionData } from "@remix-run/react";
-import { validationAction } from "~/utils/validators.server";
-import { ActionFunction, json, LoaderFunction, redirect } from "@remix-run/node";
+import {
+  ActionFunction,
+  json,
+  LoaderFunction,
+  redirect,
+} from "@remix-run/node";
 import { login } from "~/utils/auth.server";
 import { getUser } from "~/utils/auth.server";
 
-export const loader: LoaderFunction = async ({ request }) =>{
-  return await getUser(request)  ? redirect('/') : null
-}
-
-const schema = z.object({
-  email: z
-    .string({
-      required_error: "Email is Required",
-    })
-    .email({ message: "Invalid email" }),
-  password: z
-    .string()
-    .min(4, { message: "Password must be atleast 4 characters" }),
-});
-
-type ActionInput = z.TypeOf<typeof schema>;
+export const loader: LoaderFunction = async ({ request }) => {
+  return (await getUser(request)) ? redirect("/") : null;
+};
 
 export const action: ActionFunction = async ({ request }) => {
-  const { formData, errors } = await validationAction<ActionInput>({
-    request,
-    schema,
-  });
+  const form = await request.formData();
+  const email = form.get("email");
+  const password = form.get("password");
 
-  if (errors) {
-    return json({ formData, errors }, { status: 400 });
+  if (typeof email !== "string" || typeof password !== "string") {
+    return json({ error: "invalid form type" });
   }
-
-  const { email, password } = formData;
 
   return login({ email, password });
 };
@@ -42,15 +29,15 @@ export const action: ActionFunction = async ({ request }) => {
 const Login = () => {
   const actionData = useActionData();
   const [formError, setFormError] = useState(actionData?.error || "");
-  const errors = actionData?.errors || '';
+  const errors = actionData?.errors || "";
   const [formData, setFormData] = useState({
-    email: actionData?.formData?.email || '',
-    password: actionData?.formData?.password || '',
+    email: actionData?.formData?.email || "",
+    password: actionData?.formData?.password || "",
   });
-  const firstLoad = useRef(true)
+  const firstLoad = useRef(true);
 
   useEffect(() => {
-    if(!firstLoad.current) {
+    if (!firstLoad.current) {
       setFormError("");
     }
   }, [formData]);

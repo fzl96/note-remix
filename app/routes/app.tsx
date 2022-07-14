@@ -1,5 +1,5 @@
 import { Outlet, useLoaderData } from "@remix-run/react";
-import { LoaderFunction } from "@remix-run/node";
+import type { LoaderFunction } from "@remix-run/node";
 import AppLayout from "~/components/AppLayout";
 import { requireUserId } from "~/utils/auth.server";
 import type { NoteType } from "~/utils/types.server";

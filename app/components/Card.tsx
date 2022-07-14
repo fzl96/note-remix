@@ -1,4 +1,4 @@
-import { NoteType } from "~/api/notes";
+import type { NoteType } from "~/utils/types.server";
 import { motion } from "framer-motion";
 import { useMantineColorScheme } from "@mantine/core";
 
