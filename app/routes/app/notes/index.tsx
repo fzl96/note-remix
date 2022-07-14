@@ -12,7 +12,6 @@ const Notes = () => {
   const notes = useOutletContext<Note[]>();
   const [activeTab, setActiveTab] = useState(0);
 
-
   return (
     <div>
       <Tabs className="z-[-2]" active={activeTab} onTabChange={setActiveTab}>
