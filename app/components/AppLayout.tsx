@@ -33,7 +33,7 @@ const AppLayout = ({ children }: any) => {
             p="md"
             hiddenBreakpoint="sm"
             hidden={!opened}
-            width={{ sm: 200, lg: 330 }}
+            width={{ sm: 200, lg: 370 }}
             styles={{
               root: {
                 background: dark ? theme.colors.dark[8] : "#fff",
