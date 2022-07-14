@@ -2,8 +2,8 @@ import { useMediaQuery } from "@mantine/hooks";
 import { Tabs } from "@mantine/core";
 import { useState } from "react";
 import { Outlet, useOutletContext } from "@remix-run/react";
-import { NoteType } from "~/api/notes";
 import ListAllNotes from "~/components/ListAllNotes";
+import type { NoteType } from "~/utils/types.server";
 
 const Notes = () => {
   const notes = useOutletContext<NoteType[]>();
