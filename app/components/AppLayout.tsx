@@ -11,7 +11,7 @@ import {
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { Form, Link, useLocation } from "@remix-run/react";
-import { ActionFunction } from "@remix-run/node";
+import type { ActionFunction } from "@remix-run/node";
 import { logout } from "~/utils/auth.server";
 
 export const action: ActionFunction = async ({ request }) => {

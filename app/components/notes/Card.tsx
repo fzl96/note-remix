@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useMantineColorScheme } from "@mantine/core";
-import { Note } from "@prisma/client";
-import { AiOutlineCalendar } from 'react-icons/ai'
+import type { Note } from "@prisma/client";
+// import { AiOutlineCalendar } from 'react-icons/ai'
 
 interface Props {
   note: Note;
@@ -27,7 +27,7 @@ const Card = ({ note }: Props) => {
         </div>
         <div>
           <div className="flex">
-            <AiOutlineCalendar />
+            {/* <AiOutlineCalendar /> */}
             <p>{note.updatedAt}</p>
           </div>
         </div>
