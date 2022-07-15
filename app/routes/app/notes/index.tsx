@@ -11,7 +11,7 @@ const Notes = () => {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="lg:px-12 pt-10">
+    <div className="lg:px-10 pt-10">
       {/* <Tabs className="z-[-2]" active={activeTab} onTabChange={setActiveTab}>
         <Link to="/app/notes/new">New</Link>
         <Tabs.Tab label="Home"> */}
