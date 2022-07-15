@@ -1,42 +1,48 @@
-import { useMediaQuery } from "@mantine/hooks";
-import { Tabs } from "@mantine/core";
-import { useMemo, useState } from "react";
 import { Link, Outlet, useOutletContext } from "@remix-run/react";
-import ListAllNotes from "~/components/ListAllNotes";
 import { Note } from "@prisma/client";
 import Card from "~/components/notes/Card";
+import { motion } from "framer-motion";
+
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
 
 const Notes = () => {
   const notes = useOutletContext<Note[]>();
-  const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div className="lg:px-10 pt-10">
-      {/* <Tabs className="z-[-2]" active={activeTab} onTabChange={setActiveTab}>
-        <Link to="/app/notes/new">New</Link>
-        <Tabs.Tab label="Home"> */}
-          <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-5 gap-3">
-            {notes && notes.map((note: Note) => {
+    <>
+      <motion.div
+        className="lg:px-10 pt-10"
+        exit={{ opacity: 0 }}
+        initial="initial"
+        animate="animate"
+        // variants={stagger}
+      >
+        <Link to="/app/notes/new">Create new note</Link>
+        <motion.div
+          className="grid lg:grid-cols-3 grid-cols-2 lg:gap-5 gap-3"
+          // variants={stagger}
+        >
+          {notes &&
+            notes.map((note: Note, i: number) => {
               return (
-                // <div
+                // <motion.div
                 //   key={note.id}
-                //   className="w-[10rem] h-[10rem] flex flex-col rounded-2xl justify-center items-center bg-white"
+                //   whileHover={{ scale: 1.04 }}
+                //   whileTap={{ scale: 1 }}
                 // >
-                  // {note.title}
-                  <Card note={note} key={note.id} />
-                // </div>
+                <Card note={note} index={i} key={note.id} />
+                // </motion.div>
               );
             })}
-          </div>
-        {/* </Tabs.Tab>
-        <Tabs.Tab label="All Notes">
-          <ListAllNotes notes={notes}>
-            <Outlet context={notes} />
-          </ListAllNotes>
-        </Tabs.Tab>
-        <Tabs.Tab label="Folders">Third tab content</Tabs.Tab>
-      </Tabs> */}
-    </div>
+        </motion.div>
+      </motion.div>
+    </>
   );
 };
 export default Notes;

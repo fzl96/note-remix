@@ -3,23 +3,25 @@ import { useOutletContext, useParams } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { NoteType } from "~/utils/types.server";
+import type { Note } from "@prisma/client";
 
 const Awa = () => {
-  const notes = useOutletContext<NoteType[]>();
+  const notes = useOutletContext<Note[]>();
   const { noteId } = useParams();
-  const currentNote = noteId && notes && notes.find((note) => note.id === parseInt(noteId));
+  const currentNote: Note | undefined = notes.find(
+    (note) => note.id === noteId
+  );
 
   return (
     <>
-      <ScrollArea type="scroll" scrollbarSize={4}>
-        <div className={`px-3 py-1 h-[36rem] flex flex-col`}>
-          <motion.h3 className="text-2xl font-semibold">
-            {currentNote && currentNote.title}
-          </motion.h3>
-          <div className="h-5"></div>
-          <motion.p>{currentNote && currentNote.body}</motion.p>
-        </div>
-      </ScrollArea>
+      <motion.div
+        className="bg-white h-full rounded-xl"
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <p>{currentNote?.title}</p>
+      </motion.div>
     </>
   );
 };
