@@ -33,7 +33,7 @@ const AppLayout = ({ children }: any) => {
   return (
     <>
       <AppShell
-        className="z-[-2] h-full"
+        className="z-[-2] h-full p-0"
         styles={{
           main: {
             background: dark ? theme.colors.dark[7] : "#f4f5f7",

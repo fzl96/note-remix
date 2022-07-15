@@ -8,20 +8,28 @@ import { Note } from "@prisma/client";
 
 export let loader: LoaderFunction = async ({ request }) => {
   const userId = await requireUserId(request);
-  const notes = await prisma.user.findUnique({
+  // const notes = await prisma.user.findUnique({
+  //   where: {
+  //     id: userId,
+  //   },
+  //   select: {
+  //     notes: true,
+  //   },
+  // });
+  const notes = await prisma.note.findMany({
     where: {
-      id: userId,
+      userId
     },
-    select: {
-      notes: true,
-    },
-  });
-  // const notes = await prisma.note.findMany({})
+    orderBy: {
+      updatedAt: 'desc'
+    }
+  })
+
   return notes;
 };
 
 const App = () => {
-  const { notes } = useLoaderData();
+  const notes = useLoaderData();
 
   return (
     <AppLayout>
