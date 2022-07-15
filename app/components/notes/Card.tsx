@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Divider, useMantineColorScheme } from "@mantine/core";
 import type { Note } from "@prisma/client";
-import { AiOutlineCalendar } from "react-icons/ai";
-import { TiStarOutline } from "react-icons/ti";
+// import { AiOutlineCalendar } from "react-icons/ai";
+// import { TiStarOutline } from "react-icons/ti";
 import { format } from "date-fns";
 import { Menu } from "@mantine/core";
 import { Link } from "react-router-dom";
@@ -45,7 +45,7 @@ const Card = ({ note, index }: Props) => {
       >
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-end gap-2 pb-2 text-slate-400">
-            <TiStarOutline />
+            {/* <TiStarOutline /> */}
             <Menu className={`rounded-2xl ${dark ? "bg-grayishDark" : ""}`}>
               {noteMenuItem.map((item: string, index: number) => {
                 return (
@@ -79,7 +79,7 @@ const Card = ({ note, index }: Props) => {
             <div className="h-5" />
             <div>
               <div className="flex items-center gap-3">
-                <AiOutlineCalendar />
+                {/* <AiOutlineCalendar /> */}
                 <p className="uppercase text-sm">
                   {format(new Date(note.updatedAt), "MMM dd")}
                 </p>
